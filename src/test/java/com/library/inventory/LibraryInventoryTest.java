@@ -34,10 +34,19 @@ public class LibraryInventoryTest {
         assertEquals(books.size(), libraryInventory.getBooks().size());
     }
 
-    @Ignore
+    @Test
     public void isSearchByTitleYieldsRightResult() {
+        String authorToBeSearched = "Dan Brown";
         LibraryInventory libraryInventory = new LibraryInventory();
-        List<Book> books = libraryInventory.searchByAuthor("Dan Brown");
+        libraryInventory.addBooks(books);
+        List<Book> books = libraryInventory.searchByAuthor(authorToBeSearched);
+        int searchResultBookCount = 0;
+        for (Book book : books) {
+            if (book.getAuthor().equalsIgnoreCase(authorToBeSearched)) {
+                searchResultBookCount++;
+            }
+        }
+        assertEquals(searchResultBookCount, 2);
     }
 }
 

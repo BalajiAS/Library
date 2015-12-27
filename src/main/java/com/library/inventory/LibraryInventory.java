@@ -14,8 +14,14 @@ public class LibraryInventory {
         books = new ArrayList<Book>();
     }
 
-    public List<Book> searchByAuthor(String title) {
-        return null;
+    public List<Book> searchByAuthor(String author) {
+        List<Book> searchedBooks = new ArrayList<Book>();
+        for (Book book : books) {
+            if (book.getAuthor().equalsIgnoreCase(author)) {
+                searchedBooks.add(book);
+            }
+        }
+        return searchedBooks;
     }
 
     public void addBooks(List<Book> newBooks) {
